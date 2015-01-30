@@ -89,10 +89,10 @@ module StuffClassifier
   end
 
   class RedisStorage < Storage
-    def initialize(key, redis_options=nil)
+    def initialize(key, redis_connection)
       super
       @key = key
-      @redis = Redis.new(redis_options || {})
+      @redis = redis_connection
     end
 
     def load_state(classifier)
